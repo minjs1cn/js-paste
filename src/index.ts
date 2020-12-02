@@ -7,7 +7,7 @@ export type PasteResult = {
 }
 export type OnPasteEventType = (e: PasteResult) => void
 
-export const PasteEventType = 'paste'
+const PasteEventType = 'paste'
 
 const emitter = new TinyEmitter()
 
@@ -24,6 +24,7 @@ export default function onPaste() {
   })
 
   return {
+    version: __VERSION__,
     on(fn: OnPasteEventType) {
       emitter.on(PasteEventType, fn)
     }
@@ -62,3 +63,4 @@ function handle(items: DataTransferItemList) {
       break
   }
 }
+

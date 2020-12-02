@@ -3,27 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <title>js-paste</title>
   <style>
-    html, body {
-      min-height: 100vh;
-    }
-    body {
-      display: flex;
-      justify-content: center;
-    }
-    #app {
-      width: 300px;
-      height: 300px;
-      background-color: #eee;
-      color: #333;
-      line-height: 300px;
-      text-align: center;
-      font-size: 24px;
+    img {
+      max-width: calc(100vw - 20px);
+      display: block;
+      margin: 10px auto;
     }
   </style>
 </head>
 <body>
-  <div id="app">paste in here</div>
+  <h1>Paste In Here</h1>
+  <script src="./dist/paste.global.js"></script>
+  <script>
+    function createImage(file) {
+      const image = new Image()
+      image.src = URL.createObjectURL(file)
+      return image
+    }
+
+    function createText(text) {
+      const p = document.createElement('p')
+      p.textContent = text
+      return p
+    }
+    
+    const p = paste()
+
+    p.on(result => {
+      console.log(result)
+      const { kind, data } = result
+      if (kind === 'file') {
+        document.body.appendChild(createImage(data))
+      } else {
+        document.body.appendChild(createText(data))
+      }
+    })
+  </script>
 </body>
 </html>

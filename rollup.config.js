@@ -53,7 +53,7 @@ function createConfig(format, plugins = []) {
 function createReplacePlugin() {
   const replacements = {
     __DEV__: true,
-    __VERSION__: `'${pkg.version}'`
+    __VERSION__: `'${version}'`
   }
 
   Object.keys(replacements).forEach(key => {
@@ -65,6 +65,12 @@ function createReplacePlugin() {
   return replace(replacements)
 }
 
-const rollupOptions = createConfig(format)
+const plugins = []
+
+if (format !== 'global') {
+  plugins.push(terser())
+}
+
+const rollupOptions = createConfig(format, plugins)
 
 export default rollupOptions

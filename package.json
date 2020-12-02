@@ -1,9 +1,27 @@
 {
   "name": "@minjs1cn/js-paste",
   "version": "1.0.0",
+  "description": "onPaste and getDataTransferItem",
   "main": "lib/paste.umd.js",
   "module": "lib/paste.es.js",
   "license": "MIT",
+  "author": {
+    "name": "mins1cn",
+    "email": "303890562@qq.com",
+    "url": "https://minjs1cn.github.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minjs1cn/js-paste"
+  },
+  "bugs": {
+    "url": "https://github.com/minjs1cn/js-paste/issues"
+  },
+  "homepage": "https://minjs1cn.github.io/js-paste/",
+  "keywords": [
+    "typescript",
+    "paste"
+  ],
   "scripts": {
     "dev": "__DEV__=true node scripts/dev",
     "build": "__DEV__=false node scripts/build"
